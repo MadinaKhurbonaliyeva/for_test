@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:for_test/srs/presentation/login_page.dart';
-import 'package:for_test/srs/presentation/register_page.dart';
-import 'package:for_test/srs/presentation/splash.dart';
+
+import 'package:for_test/srs/presentation/widgets/splash.dart';
 
 void main() {
   runApp(const MyApp());
