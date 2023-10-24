@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:for_test/srs/presentation/register_page.dart';
+import 'package:for_test/srs/presentation/widgets/register_page.dart';
 
-import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -33,9 +32,8 @@ class _SplashPageState extends State<SplashPage> {
       body: SizedBox(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height,
-        child: Image.network(
-          'https://lh3.googleusercontent.com/p/AF1QipM-GDDDAwq8CWQCn_VjMk6KaT2aOnm1wxyJVDpv=s680-w680-h510',
-          fit: BoxFit.cover,
+        child: Image.asset(
+'assets/image/v1016-c-08_1-ksh6mza3.jpeg',          fit: BoxFit.cover,
         ),
       ),
     );

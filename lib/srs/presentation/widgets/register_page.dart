@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:for_test/data/services.dart';
-import 'package:for_test/srs/presentation/verify_page.dart';
 import 'package:for_test/srs/presentation/widgets/input_data.dart';
+import 'package:for_test/srs/presentation/widgets/verify_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key});
@@ -17,77 +17,69 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController inputEmail = TextEditingController();
   TextEditingController inputName = TextEditingController();
   TextEditingController inputPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Image.network(
-              'https://img.freepik.com/free-photo/purple-bokeh-digital-business-background_53876-104055.jpg?w=740&t=st=1696997017~exp=1696997617~hmac=72e3f3b23d6feb1cfa15e1775813bab34204b4a8ce27728386bd7e4bb196f2b0',
-              fit: BoxFit.cover,
-            ),
+      body: Container(
+        height: MediaQuery.sizeOf(context).height,
+        width: MediaQuery.sizeOf(context).width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/image/v1016-c-08_1-ksh6mza3.jpeg'),
+            fit: BoxFit.cover,
           ),
-          const Padding(
-            padding: EdgeInsets.only(
-              top: 154,
-              left: 110,
-            ),
-            child: Text(
-              'Register',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36,
-                fontFamily: 'Lato',
-                fontWeight: FontWeight.w700,
-                height: 0,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 120,
               ),
-            ),
-          ),
-          Positioned(
-            top: 250,
-            left: 20,
-            right: 20,
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    InputData(
-                      inputName: inputName,
-                      labelText: 'Name',
-                    ),
-                    const SizedBox(height: 16),
-                    InputData(
-                      inputName: inputLogin,
-                      labelText: 'Enter your login',
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    InputData(
-                      inputName: inputEmail,
-                      labelText: 'Enter your Email',
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    InputData(
-                      inputName: inputPassword,
-                      labelText: 'Enter your Password',
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                  ],
+              const Text(
+                'Register',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w700,
+                  height: 0,
                 ),
-                Positioned(
-                  bottom: 95,
-                  left: 10,
-                  right: 10,
-                  child: GestureDetector(
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Column(
+                children: [
+                  InputData(
+                    inputName: inputName,
+                    labelText: 'Name',
+                  ),
+                  const SizedBox(height: 16),
+                  InputData(
+                    inputName: inputLogin,
+                    labelText: 'Enter your login',
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  InputData(
+                    inputName: inputEmail,
+                    labelText: 'Enter your Email',
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  InputData(
+                    inputName: inputPassword,
+                    labelText: 'Enter your Password',
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  GestureDetector(
                     onTap: () async {
                       if (inputEmail.text.isEmpty ||
                           inputLogin.text.isEmpty ||
@@ -112,11 +104,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         );
                         if (a == null) {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => VerifyPage(
-                                        inputEmail: inputEmail.text,
-                                      )));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VerifyPage(
+                                inputEmail: inputEmail.text,
+                              ),
+                            ),
+                          );
                         } else if (a.isSuccess == false) {
                           Fluttertoast.showToast(
                             msg: a.messages,
@@ -146,11 +140,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
